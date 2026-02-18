@@ -1,7 +1,7 @@
 import { BrowserWindow, screen } from 'electron';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import store, { getNote, getSettings, updateNote, updateSettings } from './store.js';
+import { getNote, getSettings, updateNote, updateSettings } from './store.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
