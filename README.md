@@ -5,7 +5,7 @@
 <h1 align="center">Sticky Notes</h1>
 
 <p align="center">
-  Uma alternativa local e open-source ao Notas Autoadesivas do Windows 11, com editor rico e imagens inline.
+  A local, open-source alternative to Windows 11 Sticky Notes with a rich text editor and inline images.
 </p>
 
 <p align="center">
@@ -22,98 +22,98 @@
 
 ---
 
-## Por que este app existe?
+## Why does this app exist?
 
-O **Notas Autoadesivas** nativo do Windows 11 tem limitações que incomodam no dia a dia:
+Windows 11 **Sticky Notes** has limitations that get in the way of daily use:
 
-- **Imagens ficam no topo da nota**, nunca inline com o texto. Você não consegue colar uma imagem no meio de um parágrafo.
-- **Depende de conta Microsoft e sincronização na nuvem**, o que adiciona latência para abrir e criar notas.
-- **Não é extensível** — se você quer uma funcionalidade nova, precisa esperar a Microsoft implementar.
+- **Images are pinned to the top of the note**, never inline with text. You can't paste an image in the middle of a paragraph.
+- **Requires a Microsoft account and cloud sync**, which adds latency to open and create notes.
+- **Not extensible** — if you want a new feature, you have to wait for Microsoft to implement it.
 
-O **Sticky Notes** resolve isso:
+**Sticky Notes** fixes all of that:
 
-- **Imagens inline** — cole com `Ctrl+V` ou arraste uma imagem direto no texto. Ela aparece exatamente onde você colocou.
-- **100% local** — sem conta, sem nuvem, sem latência. Abre instantaneamente, cria notas em milissegundos.
-- **Open-source e extensível** — construído com Electron + Quill.js, fácil de customizar e adicionar funcionalidades.
+- **Inline images** — paste with `Ctrl+V` or drag and drop an image right into your text. It appears exactly where you placed it.
+- **100% local** — no account, no cloud, no latency. Opens instantly, creates notes in milliseconds.
+- **Open-source and extensible** — built with Electron + Quill.js, easy to customize and add new features.
 
 ---
 
-## Download e Instalacao
+## Download and Installation
 
-### Baixar o executavel
+### Download the executable
 
-Acesse a pagina de releases no GitHub:
+Go to the releases page on GitHub:
 
 **[github.com/FelipeGazapina/sticky-notes/releases](https://github.com/FelipeGazapina/sticky-notes/releases/latest)**
 
-Escolha uma das opcoes:
+Choose one of the options:
 
-| Arquivo | O que e |
+| File | What is it |
 |---|---|
-| `Sticky Notes Setup X.X.X.exe` | **Instalador** — instala no computador com atalho na area de trabalho e menu iniciar |
-| `Sticky Notes Portable X.X.X.exe` | **Portatil** — roda direto, sem instalar nada. Ideal para pen drive |
+| `Sticky Notes Setup X.X.X.exe` | **Installer** — installs on your computer with desktop and start menu shortcuts |
+| `Sticky Notes Portable X.X.X.exe` | **Portable** — runs directly, no installation needed. Great for USB drives |
 
-> **Nota:** O Windows pode exibir um aviso de "aplicativo nao reconhecido" porque o executavel nao e assinado digitalmente. Clique em **"Mais informacoes"** e depois **"Executar assim mesmo"**.
+> **Note:** Windows may show a "Windows protected your PC" warning because the executable is not digitally signed. Click **"More info"** and then **"Run anyway"**.
 
-### Instalar via Setup
+### Install via Setup
 
-1. Baixe o `Sticky Notes Setup X.X.X.exe`
-2. Execute o instalador
-3. Escolha o diretorio de instalacao (ou deixe o padrao)
-4. Pronto — o app aparece na area de trabalho e no menu iniciar
+1. Download `Sticky Notes Setup X.X.X.exe`
+2. Run the installer
+3. Choose the installation directory (or leave the default)
+4. Done — the app appears on your desktop and in the start menu
 
-### Usar a versao portatil
+### Use the portable version
 
-1. Baixe o `Sticky Notes Portable X.X.X.exe`
-2. Execute diretamente — nao precisa instalar
-3. Os dados ficam salvos localmente na pasta do usuario
-
----
-
-## Funcionalidades
-
-### Editor rico com Quill.js
-
-- **Negrito**, *italico*, <u>sublinhado</u>, ~~tachado~~
-- Listas com marcadores
-- Atalhos de teclado: `Ctrl+B`, `Ctrl+I`, `Ctrl+U`
-
-### Imagens inline
-
-- **Colar imagens** com `Ctrl+V` — a imagem aparece exatamente na posicao do cursor
-- **Arrastar e soltar** imagens direto na nota
-- As imagens sao salvas dentro da propria nota, sem dependencia de arquivos externos
-
-### 7 cores de nota
-
-Amarelo, verde, rosa, roxo, azul, carvao e branco — igual ao Sticky Notes original do Windows.
-
-### Tema claro e escuro
-
-Detecta automaticamente o tema do sistema ou permite escolha manual.
-
-### Fixar no topo
-
-Qualquer nota pode ser fixada acima de todas as janelas com o botao de pin.
-
-### Tudo local
-
-- Sem conta Microsoft, sem login, sem internet
-- Dados salvos localmente via `electron-store`
-- Zero latencia para abrir, criar ou editar notas
+1. Download `Sticky Notes Portable X.X.X.exe`
+2. Run it directly — no installation required
+3. Data is saved locally in the user folder
 
 ---
 
-## Para desenvolvedores
+## Features
 
-Se voce quer rodar o projeto do codigo-fonte, adicionar funcionalidades ou contribuir:
+### Rich text editor with Quill.js
 
-### Pre-requisitos
+- **Bold**, *italic*, <u>underline</u>, ~~strikethrough~~
+- Bullet lists
+- Keyboard shortcuts: `Ctrl+B`, `Ctrl+I`, `Ctrl+U`
 
-- [Node.js](https://nodejs.org/) v18 ou superior
+### Inline images
+
+- **Paste images** with `Ctrl+V` — the image appears exactly at the cursor position
+- **Drag and drop** images directly into the note
+- Images are saved inside the note itself, no external file dependencies
+
+### 7 note colors
+
+Yellow, green, pink, purple, blue, charcoal, and white — just like the original Windows Sticky Notes.
+
+### Light and dark theme
+
+Automatically detects the system theme or allows manual toggle.
+
+### Pin to top
+
+Any note can be pinned above all other windows with the pin button.
+
+### Everything is local
+
+- No Microsoft account, no login, no internet
+- Data saved locally via `electron-store`
+- Zero latency to open, create, or edit notes
+
+---
+
+## For developers
+
+If you want to run the project from source, add features, or contribute:
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v18 or higher
 - [Git](https://git-scm.com/)
 
-### Clonar e rodar
+### Clone and run
 
 ```bash
 git clone https://github.com/FelipeGazapina/sticky-notes.git
@@ -122,65 +122,65 @@ npm install
 npm start
 ```
 
-### Scripts disponiveis
+### Available scripts
 
-| Comando | O que faz |
+| Command | What it does |
 |---|---|
-| `npm start` | Abre o app em modo normal |
-| `npm run dev` | Abre o app em modo de desenvolvimento |
-| `npm run build` | Gera o instalador + portatil na pasta `dist/` |
-| `npm run build:portable` | Gera apenas o executavel portatil |
+| `npm start` | Opens the app in normal mode |
+| `npm run dev` | Opens the app in development mode |
+| `npm run build` | Generates the installer + portable in the `dist/` folder |
+| `npm run build:portable` | Generates only the portable executable |
 
-### Estrutura do projeto
+### Project structure
 
 ```
 sticky-notes/
-├── main.js                      # Processo principal do Electron
+├── main.js                      # Electron main process
 ├── preload/
-│   ├── noteListPreload.js       # Bridge de API para a lista de notas
-│   └── notePreload.js           # Bridge de API para cada nota
+│   ├── noteListPreload.js       # API bridge for the note list
+│   └── notePreload.js           # API bridge for each note
 ├── src/
 │   ├── main/
-│   │   ├── store.js             # Persistencia local (electron-store)
-│   │   ├── windowManager.js     # Gerenciamento de janelas
-│   │   ├── ipcHandlers.js       # Comunicacao entre processos
-│   │   └── menuBuilder.js       # Menu do app
+│   │   ├── store.js             # Local persistence (electron-store)
+│   │   ├── windowManager.js     # Window management
+│   │   ├── ipcHandlers.js       # Inter-process communication
+│   │   └── menuBuilder.js       # App menu
 │   └── renderer/
-│       ├── note/                # Interface da nota individual
-│       ├── noteList/            # Interface da lista de notas
-│       └── shared/              # Temas e estilos compartilhados
+│       ├── note/                # Individual note UI
+│       ├── noteList/            # Note list UI
+│       └── shared/              # Shared themes and styles
 └── assets/
-    └── icons/                   # Icones do app
+    └── icons/                   # App icons
 ```
 
-### Stack tecnica
+### Tech stack
 
-- **Electron** — framework desktop multiplataforma
-- **Quill.js v2** — editor de texto rico
-- **electron-store** — persistencia local em JSON
-- **Vanilla JS** — sem frameworks frontend, leve e rapido
-- **electron-builder** — empacotamento para Windows
+- **Electron** — cross-platform desktop framework
+- **Quill.js v2** — rich text editor
+- **electron-store** — local JSON persistence
+- **Vanilla JS** — no frontend frameworks, lightweight and fast
+- **electron-builder** — Windows packaging
 
 ---
 
 ## Roadmap
 
-Funcionalidades planejadas para versoes futuras:
+Features planned for future releases:
 
-- [ ] Suporte a tabelas no editor
-- [ ] Exportar notas como PDF ou Markdown
-- [ ] Backup e restauracao de notas
-- [ ] Atalhos globais para criar nota rapida
-- [ ] Busca global em todas as notas
-
----
-
-## Contribuindo
-
-Contribuicoes sao bem-vindas! Abra uma [issue](https://github.com/FelipeGazapina/sticky-notes/issues) para reportar bugs ou sugerir funcionalidades, ou envie um pull request.
+- [ ] Table support in the editor
+- [ ] Export notes as PDF or Markdown
+- [ ] Note backup and restore
+- [ ] Global shortcuts for quick note creation
+- [ ] Global search across all notes
 
 ---
 
-## Licenca
+## Contributing
 
-Este projeto e open-source. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Contributions are welcome! Open an [issue](https://github.com/FelipeGazapina/sticky-notes/issues) to report bugs or suggest features, or submit a pull request.
+
+---
+
+## License
+
+This project is open-source. See the [LICENSE](LICENSE) file for details.
