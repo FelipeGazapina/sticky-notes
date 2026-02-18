@@ -1,4 +1,5 @@
-import { autoUpdater } from 'electron-updater';
+import pkg from 'electron-updater';
+const { autoUpdater } = pkg;
 import { dialog, app } from 'electron';
 
 // Don't auto-download — ask the user first
