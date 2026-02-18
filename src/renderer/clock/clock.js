@@ -113,6 +113,7 @@ function selectTimer(id) {
 // ---- Update active timer display ----
 function updateTimerDisplay(timer) {
   timerLabelEl.textContent = timer.label || 'Untitled Timer';
+  timerLabelEl.title = 'Double-click to rename';
   timerCountdown.textContent = formatTime(timer.remainingMs);
 
   if (timer.type === 'pomodoro') {
@@ -499,6 +500,43 @@ window.api.onTimersChanged((data) => {
     allTimers = allTimers.filter(t => t.id !== data.timerId);
   }
   renderTimers();
+});
+
+// ---- Editable Timer Label (double-click) ----
+timerLabelEl.addEventListener('dblclick', () => {
+  if (!activeTimerId) return;
+  const timer = allTimers.find(t => t.id === activeTimerId);
+  if (!timer) return;
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'timer-label-edit';
+  input.value = timer.label || '';
+  input.placeholder = 'Timer name...';
+
+  timerLabelEl.replaceWith(input);
+  input.focus();
+  input.select();
+
+  let saved = false;
+
+  const save = async () => {
+    if (saved) return;
+    saved = true;
+    const newLabel = input.value.trim();
+    timer.label = newLabel;
+    await window.api.updateTimer(timer.id, { label: newLabel });
+
+    input.replaceWith(timerLabelEl);
+    timerLabelEl.textContent = newLabel || 'Untitled Timer';
+    renderTimers();
+  };
+
+  input.addEventListener('blur', save);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); input.blur(); }
+    if (e.key === 'Escape') { input.replaceWith(timerLabelEl); saved = true; }
+  });
 });
 
 // ---- Init Clock ----

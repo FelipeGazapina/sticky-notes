@@ -53,6 +53,24 @@
 .timer-label {
   font-size: 14px;
   color: var(--text-secondary);
+  cursor: default;
+}
+
+.timer-label:hover {
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+
+.timer-label-edit {
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid #0078D4;
+  border-radius: var(--radius);
+  padding: 4px 8px;
+  text-align: center;
+  outline: none;
+  width: 200px;
 }
 
 .timer-phase {
