@@ -1,6 +1,7 @@
 import { Menu, app } from 'electron';
 import { createNote } from './store.js';
 import windowManager from './windowManager.js';
+import { checkForUpdatesManual } from './autoUpdater.js';
 
 export function buildAppMenu() {
   const template = [
@@ -55,6 +56,20 @@ export function buildAppMenu() {
         { role: 'zoomIn', label: 'Aumentar Zoom' },
         { role: 'zoomOut', label: 'Diminuir Zoom' },
         { role: 'resetZoom', label: 'Zoom Padrão' }
+      ]
+    },
+    {
+      label: 'Ajuda',
+      submenu: [
+        {
+          label: 'Check for Updates...',
+          click: () => checkForUpdatesManual()
+        },
+        { type: 'separator' },
+        {
+          label: `Version ${app.getVersion()}`,
+          enabled: false
+        }
       ]
     }
   ];

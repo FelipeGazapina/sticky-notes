@@ -1,6 +1,6 @@
 {
   "name": "sticky-notes",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Clone do Notas Autoadesivas do Windows 11",
   "author": "FelipeGazapina",
   "type": "module",
@@ -42,10 +42,16 @@
     },
     "portable": {
       "artifactName": "${productName} Portable ${version}.${ext}"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "FelipeGazapina",
+      "repo": "sticky-notes"
     }
   },
   "dependencies": {
-    "electron-store": "^11.0.0"
+    "electron-store": "^11.0.0",
+    "electron-updater": "^6.7.3"
   },
   "devDependencies": {
     "electron": "^33.0.0",
