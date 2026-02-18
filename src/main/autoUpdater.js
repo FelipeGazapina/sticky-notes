@@ -74,13 +74,14 @@ autoUpdater.on('update-downloaded', async () => {
 
 autoUpdater.on('error', (err) => {
   console.error('[AutoUpdater] Error:', err.message);
+  console.error('[AutoUpdater] Stack:', err.stack);
 
   if (isManualCheck) {
     dialog.showMessageBox({
       type: 'error',
       title: 'Update Error',
       message: 'Could not check for updates',
-      detail: 'Please check your internet connection and try again.\n\nYou can also download the latest version manually from GitHub.',
+      detail: `Error: ${err.message}\n\nPlease check your internet connection and try again.\nYou can also download the latest version manually from GitHub.`,
       buttons: ['OK'],
     });
     isManualCheck = false;

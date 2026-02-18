@@ -38,10 +38,11 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Sticky Notes"
+      "shortcutName": "Sticky Notes",
+      "artifactName": "Sticky-Notes-Setup-${version}.${ext}"
     },
     "portable": {
-      "artifactName": "${productName} Portable ${version}.${ext}"
+      "artifactName": "Sticky-Notes-Portable-${version}.${ext}"
     },
     "publish": {
       "provider": "github",
