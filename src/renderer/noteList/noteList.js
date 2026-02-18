@@ -165,3 +165,26 @@ async function init() {
 }
 
 init();
+
+// ---- Tab Switching ----
+const tabBar = document.getElementById('tabBar');
+const tabContentNotes = document.getElementById('tabContentNotes');
+const tabContentClock = document.getElementById('tabContentClock');
+
+tabBar.addEventListener('click', (e) => {
+  const btn = e.target.closest('.tab-btn');
+  if (!btn) return;
+
+  const tab = btn.dataset.tab;
+
+  tabBar.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  if (tab === 'notes') {
+    tabContentNotes.classList.add('active');
+    tabContentClock.classList.remove('active');
+  } else if (tab === 'clock') {
+    tabContentClock.classList.add('active');
+    tabContentNotes.classList.remove('active');
+  }
+});

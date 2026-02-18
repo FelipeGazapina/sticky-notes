@@ -1,6 +1,15 @@
-import { ipcMain, nativeTheme, dialog, BrowserWindow } from 'electron';
-import { getAllNotes, getNote, createNote, updateNote, deleteNote } from './store.js';
+import { ipcMain, nativeTheme, dialog, BrowserWindow, Notification } from 'electron';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import {
+  getAllNotes, getNote, createNote, updateNote, deleteNote,
+  getAllTimers, getTimer, createTimer, updateTimer, deleteTimer
+} from './store.js';
 import windowManager from './windowManager.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const rootDir = join(__dirname, '..', '..');
 
 export function registerIpcHandlers() {
   // ---- Notes CRUD ----
@@ -80,6 +89,50 @@ export function registerIpcHandlers() {
   ipcMain.on('window:close', (event) => {
     const win = BrowserWindow.fromWebContents(event.sender);
     if (win) win.close();
+  });
+
+  // ---- Timers CRUD ----
+
+  ipcMain.handle('timers:get-all', () => {
+    return getAllTimers();
+  });
+
+  ipcMain.handle('timers:get', (_event, id) => {
+    return getTimer(id);
+  });
+
+  ipcMain.handle('timers:create', (_event, data) => {
+    const timer = createTimer(data);
+    windowManager.broadcastToList('timers:changed', { action: 'create', timer });
+    return timer;
+  });
+
+  ipcMain.handle('timers:update', (_event, id, data) => {
+    const timer = updateTimer(id, data);
+    if (timer) {
+      windowManager.broadcastToList('timers:changed', { action: 'update', timer });
+    }
+    return timer;
+  });
+
+  ipcMain.handle('timers:delete', (_event, id) => {
+    deleteTimer(id);
+    windowManager.broadcastToList('timers:changed', { action: 'delete', timerId: id });
+    return true;
+  });
+
+  // ---- Timer Notification ----
+
+  ipcMain.on('timers:notify', (_event, data) => {
+    if (Notification.isSupported()) {
+      const notif = new Notification({
+        title: data.title || 'Timer',
+        body: data.body || 'Timer finished!',
+        icon: join(rootDir, 'assets', 'icons', 'icon.png'),
+        silent: false,
+      });
+      notif.show();
+    }
   });
 
   // ---- Theme ----

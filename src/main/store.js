@@ -6,6 +6,10 @@ const schema = {
     type: 'object',
     default: {}
   },
+  timers: {
+    type: 'object',
+    default: {}
+  },
   settings: {
     type: 'object',
     properties: {
@@ -82,6 +86,58 @@ export function updateNote(id, data) {
 export function deleteNote(id) {
   store.delete(`notes.${id}`);
 }
+
+// ---- Timers CRUD ----
+
+export function getAllTimers() {
+  const timers = store.get('timers', {});
+  return Object.values(timers).sort((a, b) =>
+    new Date(b.createdAt) - new Date(a.createdAt)
+  );
+}
+
+export function getTimer(id) {
+  return store.get(`timers.${id}`, null);
+}
+
+export function createTimer(data) {
+  const id = crypto.randomUUID();
+  const now = new Date().toISOString();
+  const timer = {
+    id,
+    type: data.type || 'simple',
+    label: data.label || '',
+    durationMs: data.durationMs || 0,
+    workMs: data.workMs || 1500000,
+    breakMs: data.breakMs || 300000,
+    rounds: data.rounds || 4,
+    currentRound: 1,
+    phase: 'work',
+    status: 'planned',
+    remainingMs: data.type === 'pomodoro' ? (data.workMs || 1500000) : (data.durationMs || 0),
+    startedAt: null,
+    createdAt: now,
+    completedAt: null,
+    audioAlert: data.audioAlert !== undefined ? data.audioAlert : true,
+    desktopNotification: data.desktopNotification !== undefined ? data.desktopNotification : true,
+  };
+  store.set(`timers.${id}`, timer);
+  return timer;
+}
+
+export function updateTimer(id, data) {
+  const timer = store.get(`timers.${id}`);
+  if (!timer) return null;
+  const updated = { ...timer, ...data, id };
+  store.set(`timers.${id}`, updated);
+  return updated;
+}
+
+export function deleteTimer(id) {
+  store.delete(`timers.${id}`);
+}
+
+// ---- Settings ----
 
 export function getSettings() {
   return store.get('settings', { theme: 'system' });

@@ -1,0 +1,369 @@
+/* ---- Clock Container ---- */
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ---- Clock Header ---- */
+.clock-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 8px;
+  flex-shrink: 0;
+}
+
+.clock-title {
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.btn-new-timer {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  transition: background var(--transition);
+}
+
+.btn-new-timer:hover {
+  background: var(--hover-bg);
+}
+
+/* ---- Timer Display (active timer) ---- */
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 16px;
+  gap: 6px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.timer-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.timer-phase {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #0078D4;
+}
+
+.timer-phase.break {
+  color: #92D36E;
+}
+
+.timer-countdown {
+  font-size: 48px;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.timer-progress-bar {
+  width: 100%;
+  max-width: 260px;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 6px 0;
+}
+
+.timer-progress-fill {
+  height: 100%;
+  background: #0078D4;
+  border-radius: 2px;
+  transition: width 1s linear;
+  width: 0%;
+}
+
+.timer-round-info {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.timer-controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.timer-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  transition: background var(--transition);
+}
+
+.timer-btn:hover {
+  background: var(--hover-bg);
+}
+
+.timer-btn.primary {
+  background: #0078D4;
+  color: white;
+}
+
+.timer-btn.primary:hover {
+  background: #006CBE;
+}
+
+/* ---- Timer Form ---- */
+.timer-form {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.timer-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timer-form-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timer-form-input {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition);
+  font-size: 13px;
+}
+
+.timer-form-input:focus {
+  border-color: #0078D4;
+}
+
+.timer-form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.timer-form-row {
+  display: flex;
+  gap: 8px;
+}
+
+.timer-form-row > * {
+  flex: 1;
+}
+
+.timer-input-with-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timer-input-with-label .timer-form-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.timer-input-unit {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.timer-type-toggle {
+  display: flex;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.timer-type-btn {
+  flex: 1;
+  padding: 8px;
+  font-size: 13px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  transition: background var(--transition), color var(--transition);
+  text-align: center;
+}
+
+.timer-type-btn.active {
+  background: #0078D4;
+  color: white;
+}
+
+.timer-form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.btn-timer-cancel {
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  transition: background var(--transition);
+}
+
+.btn-timer-cancel:hover {
+  background: var(--hover-bg);
+}
+
+.btn-timer-create {
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  background: #0078D4;
+  color: white;
+  font-weight: 600;
+  transition: background var(--transition);
+}
+
+.btn-timer-create:hover {
+  background: #006CBE;
+}
+
+/* ---- Timer List ---- */
+.timer-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 16px 16px;
+}
+
+.timer-card {
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition);
+  border: 1px solid var(--border-color);
+  gap: 12px;
+}
+
+.timer-card:hover {
+  background: var(--hover-bg);
+  box-shadow: var(--shadow);
+}
+
+.timer-card.selected {
+  border-color: #0078D4;
+}
+
+.timer-card-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.timer-card-status.planned { background: var(--text-muted); }
+.timer-card-status.running { background: #0078D4; }
+.timer-card-status.paused  { background: #FFB900; }
+.timer-card-status.completed { background: #92D36E; }
+
+.timer-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.timer-card-label {
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timer-card-detail {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.timer-card-time {
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.timer-card-actions {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.timer-card:hover .timer-card-actions {
+  opacity: 1;
+}
+
+.btn-delete-timer {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: background var(--transition), color var(--transition);
+}
+
+.btn-delete-timer:hover {
+  background: #E81123;
+  color: white;
+}
+
+/* ---- Timer Empty State ---- */
+.timer-empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  gap: 8px;
+  padding: 24px;
+  text-align: center;
+}
+
+.timer-empty-state .empty-sub {
+  font-size: 12px;
+}
