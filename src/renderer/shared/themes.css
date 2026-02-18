@@ -1,0 +1,150 @@
+/* ---- Light Mode (default) ---- */
+:root {
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F3F3F3;
+  --text-primary: #1A1A1A;
+  --text-secondary: #616161;
+  --text-muted: #9E9E9E;
+  --border-color: #E0E0E0;
+  --hover-bg: #F0F0F0;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --font-family: 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --radius: 8px;
+  --radius-sm: 4px;
+  --transition: 150ms ease;
+}
+
+/* ---- Dark Mode ---- */
+[data-theme="dark"] {
+  --bg-primary: #202020;
+  --bg-secondary: #2B2B2B;
+  --bg-tertiary: #333333;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B3B3B3;
+  --text-muted: #808080;
+  --border-color: #404040;
+  --hover-bg: #383838;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Note Color Themes - Light Mode ---- */
+[data-color="yellow"] {
+  --note-header: #FFE78E;
+  --note-body: #FFF9B1;
+  --note-text: #1A1A1A;
+  --note-placeholder: #8B7E3A;
+}
+
+[data-color="green"] {
+  --note-header: #92D36E;
+  --note-body: #D7F1BF;
+  --note-text: #1A1A1A;
+  --note-placeholder: #3D6B2A;
+}
+
+[data-color="pink"] {
+  --note-header: #F5A3B7;
+  --note-body: #FFD4DC;
+  --note-text: #1A1A1A;
+  --note-placeholder: #8B3A4A;
+}
+
+[data-color="purple"] {
+  --note-header: #C2A3E0;
+  --note-body: #E5D4F5;
+  --note-text: #1A1A1A;
+  --note-placeholder: #5A3A7A;
+}
+
+[data-color="blue"] {
+  --note-header: #7BCCEC;
+  --note-body: #C4ECFF;
+  --note-text: #1A1A1A;
+  --note-placeholder: #2A5A7A;
+}
+
+[data-color="charcoal"] {
+  --note-header: #9E9E9E;
+  --note-body: #D4D4D4;
+  --note-text: #1A1A1A;
+  --note-placeholder: #5A5A5A;
+}
+
+[data-color="white"] {
+  --note-header: #E8E8E8;
+  --note-body: #FFFFFF;
+  --note-text: #1A1A1A;
+  --note-placeholder: #9E9E9E;
+}
+
+/* ---- Note Color Themes - Dark Mode ---- */
+[data-theme="dark"][data-color="yellow"],
+[data-theme="dark"] [data-color="yellow"] {
+  --note-header: #4C4428;
+  --note-body: #433E1E;
+  --note-text: #F5F5F5;
+  --note-placeholder: #8B8260;
+}
+
+[data-theme="dark"][data-color="green"],
+[data-theme="dark"] [data-color="green"] {
+  --note-header: #2D5A1E;
+  --note-body: #2B4A23;
+  --note-text: #F5F5F5;
+  --note-placeholder: #6B9B5A;
+}
+
+[data-theme="dark"][data-color="pink"],
+[data-theme="dark"] [data-color="pink"] {
+  --note-header: #6E3040;
+  --note-body: #5E2938;
+  --note-text: #F5F5F5;
+  --note-placeholder: #C08090;
+}
+
+[data-theme="dark"][data-color="purple"],
+[data-theme="dark"] [data-color="purple"] {
+  --note-header: #4A2D6E;
+  --note-body: #3E2558;
+  --note-text: #F5F5F5;
+  --note-placeholder: #A080C0;
+}
+
+[data-theme="dark"][data-color="blue"],
+[data-theme="dark"] [data-color="blue"] {
+  --note-header: #1E4A5A;
+  --note-body: #1A3E4C;
+  --note-text: #F5F5F5;
+  --note-placeholder: #70A0B8;
+}
+
+[data-theme="dark"][data-color="charcoal"],
+[data-theme="dark"] [data-color="charcoal"] {
+  --note-header: #505050;
+  --note-body: #3A3A3A;
+  --note-text: #F5F5F5;
+  --note-placeholder: #888888;
+}
+
+[data-theme="dark"][data-color="white"],
+[data-theme="dark"] [data-color="white"] {
+  --note-header: #525252;
+  --note-body: #2B2B2B;
+  --note-text: #F5F5F5;
+  --note-placeholder: #888888;
+}
+
+/* ---- Color Swatches (for color picker) ---- */
+.color-swatch { width: 20px; height: 20px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: transform var(--transition), border-color var(--transition); }
+.color-swatch:hover { transform: scale(1.2); }
+.color-swatch.active { border-color: var(--text-primary); }
+.color-swatch[data-color="yellow"] { background: #FFE78E; }
+.color-swatch[data-color="green"] { background: #92D36E; }
+.color-swatch[data-color="pink"] { background: #F5A3B7; }
+.color-swatch[data-color="purple"] { background: #C2A3E0; }
+.color-swatch[data-color="blue"] { background: #7BCCEC; }
+.color-swatch[data-color="charcoal"] { background: #9E9E9E; }
+.color-swatch[data-color="white"] { background: #E8E8E8; border-color: #CCC; }

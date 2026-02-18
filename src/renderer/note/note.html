@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; script-src 'self' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: file:;">
+  <title>Nota</title>
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/themes.css">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="note.css">
+</head>
+<body>
+  <div class="note-window" id="noteWindow" data-color="yellow">
+    <!-- Custom Title Bar -->
+    <div class="note-titlebar" id="titlebar">
+      <div class="titlebar-left">
+        <button class="btn-icon btn-menu" id="btnMenu" title="Menu">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="4" cy="8" r="1.2" fill="currentColor"/>
+            <circle cx="8" cy="8" r="1.2" fill="currentColor"/>
+            <circle cx="12" cy="8" r="1.2" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="btn-icon btn-new" id="btnNewNote" title="Nova Nota (Ctrl+N)">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="titlebar-right">
+        <button class="btn-icon btn-pin" id="btnPin" title="Fixar no topo">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M5 1L9 1L10 5L11 6H3L4 5L5 1Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            <path d="M7 6V12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M5 12H9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="btn-icon btn-minimize" id="btnMinimize" title="Minimizar">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="btn-icon btn-close" id="btnClose" title="Fechar">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Color Picker (hidden by default) -->
+    <div class="color-picker" id="colorPicker" style="display: none;">
+      <div class="color-swatch" data-color="yellow" title="Amarelo"></div>
+      <div class="color-swatch" data-color="green" title="Verde"></div>
+      <div class="color-swatch" data-color="pink" title="Rosa"></div>
+      <div class="color-swatch" data-color="purple" title="Roxo"></div>
+      <div class="color-swatch" data-color="blue" title="Azul"></div>
+      <div class="color-swatch" data-color="charcoal" title="Carv\u00e3o"></div>
+      <div class="color-swatch" data-color="white" title="Branco"></div>
+      <div class="color-picker-divider"></div>
+      <button class="btn-delete-inline" id="btnDeleteNote" title="Deletar nota">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2.5 4h9M5 4V3a1 1 0 011-1h2a1 1 0 011 1v1M5.5 6.5v4M8.5 6.5v4M3.5 4l.5 8a1 1 0 001 1h4a1 1 0 001-1l.5-8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Deletar nota
+      </button>
+    </div>
+
+    <!-- Formatting Toolbar -->
+    <div class="formatting-toolbar" id="formattingToolbar">
+      <button class="fmt-btn" data-format="bold" title="Negrito (Ctrl+B)"><strong>N</strong></button>
+      <button class="fmt-btn" data-format="italic" title="It\u00e1lico (Ctrl+I)"><em>I</em></button>
+      <button class="fmt-btn" data-format="underline" title="Sublinhado (Ctrl+U)"><u>S</u></button>
+      <button class="fmt-btn" data-format="strike" title="Tachado"><s>T</s></button>
+      <div class="fmt-divider"></div>
+      <button class="fmt-btn" data-format="list" title="Lista com marcadores">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="2.5" cy="3.5" r="1" fill="currentColor"/>
+          <circle cx="2.5" cy="7" r="1" fill="currentColor"/>
+          <circle cx="2.5" cy="10.5" r="1" fill="currentColor"/>
+          <path d="M5.5 3.5h6M5.5 7h6M5.5 10.5h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Quill Editor -->
+    <div class="editor-container">
+      <div id="editor"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+  <script src="note.js"></script>
+</body>
+</html>
