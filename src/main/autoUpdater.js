@@ -90,9 +90,17 @@ autoUpdater.on('error', (err) => {
 
 // ---- Public API ----
 
+function isDev() {
+  return !app.isPackaged;
+}
+
 export function initAutoUpdater() {
+  if (isDev()) {
+    console.log('[AutoUpdater] Dev mode detected, skipping auto-update.');
+    return;
+  }
+
   // Only auto-check for NSIS installs, not portable
-  // Portable runs from temp dir or user-chosen location, can't auto-update
   const isPortable = process.env.PORTABLE_EXECUTABLE_DIR != null;
 
   if (isPortable) {
@@ -109,6 +117,17 @@ export function initAutoUpdater() {
 }
 
 export function checkForUpdatesManual() {
+  if (isDev()) {
+    dialog.showMessageBox({
+      type: 'info',
+      title: 'Development Mode',
+      message: 'Auto-update is not available in development mode',
+      detail: 'Please run the installed version to check for updates.',
+      buttons: ['OK'],
+    });
+    return;
+  }
+
   isManualCheck = true;
   autoUpdater.checkForUpdates().catch((err) => {
     console.error('[AutoUpdater] Manual check failed:', err.message);
@@ -117,7 +136,7 @@ export function checkForUpdatesManual() {
       type: 'error',
       title: 'Update Error',
       message: 'Could not check for updates',
-      detail: 'Please check your internet connection and try again.',
+      detail: `Error: ${err.message}\n\nPlease check your internet connection and try again.`,
       buttons: ['OK'],
     });
   });
